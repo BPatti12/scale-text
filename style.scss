@@ -1,0 +1,67 @@
+// I was inpired by https://codepen.io/MadeByMike/pen/bEEGvv
+// to try and make text that scales perfectly based on aspect ratio
+// with
+
+$baseline: 1.5rem;
+
+$minScreen: 20rem;
+$maxScreen: 4096rem;
+$minFont: 1rem;
+$maxFont: $maxScreen * 0.04;
+
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+    & {
+        @each $property in $properties {
+            $size: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * ((80vmin - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+            #{$property}: clamp($minFont, $size, $maxFont);
+        }
+    }
+}
+
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@font-face {
+    font-family: tt-norms;
+    src: url("./TTNORMS-BOLD.OTF");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: tt-norms;
+    src: url("./TTNORMS-MEDIUM.OTF");
+    font-weight: 500;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-smooth: antialiased;
+    text-rendering: optimizeLegibility;
+    @include fluid-type(font-size, $minScreen, $maxScreen, $minFont, $maxFont);
+}
+
+body {
+    font-family: tt-norms;
+}
+
+p {
+    line-height: $baseline;
+    margin-bottom: $baseline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 700;
+    line-height: 1em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}

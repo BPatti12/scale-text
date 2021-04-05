@@ -1,0 +1,49 @@
+@font-face {
+  font-family: tt-norms;
+  src: url("./TTNORMS-BOLD.OTF");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: tt-norms;
+  src: url("./TTNORMS-MEDIUM.OTF");
+  font-weight: 500;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-smooth: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  font-size: clamp(1rem, calc(1rem + 162.84 * ((80vmin - 20rem) / 4076)), 163.84rem);
+}
+
+body {
+  font-family: tt-norms;
+}
+
+p {
+  line-height: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+  line-height: 1em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
